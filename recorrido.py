@@ -1,19 +1,48 @@
+import base64
+import json
+import hashlib
+
+
 class Recorrido:
 
-    posiciones_recorridos = None
-    __hash = None
+    __posiciones_recorridos = None
     __limite = 8
+    __hash = None
+
+    def __init__(self):
+        self.__posiciones_recorridos = []
 
     @property
     def hash(self):
-        return self.__hash
+        """Devuelve un hash del recorrido como un array binario."""
+        hash_ = []
+        for x in self.__get_digesto():
+            hash_.append(format(x, '08b'))
+        return hash_
 
-    def __init__(self):
-        self.posiciones_recorridos = []
+    @property
+    def hash_b64(self):
+        """Devuelve un hash del recorrido en base64."""
+        return base64.b64encode(self.__get_digesto())
+
+    def __get_digesto(self):
+        """A aprtir de la lista de posiciones recorridos genera un hash"""
+        h = hashlib.sha256()
+        h.update(bytes(json.dumps(self.__posiciones_recorridos), 'ascii'))
+        return h.digest()
+
+    @property
+    def cantidad_de_paso(self):
+        """Devuelve cantidad maxima de pasos. n**2-1"""
+        return (self.__limite ** 2 - 1)
+
+    @property
+    def posiciones_recorridos(self):
+        return self.__posiciones_recorridos
 
     def agregar_posicion(self, posicion):
         """agrega posicion a la lista de posiciones"""
-        self.posiciones_recorridos.append(posicion)
+        self.__posiciones_recorridos.append(posicion)
 
     def obtener_posiciones_disponibles(self, posiciones_posibles):
         """Apartir de la lista de posiciones recibidas
@@ -28,7 +57,7 @@ class Recorrido:
 
         # de la lista recibida filtro las posiciones usadas.
         filtro = filter(
-            lambda x: (x not in self.posiciones_recorridos),
+            lambda x: (x not in self.__posiciones_recorridos),
             posiciones_posibles
         )
         # filtro las posiciones que estan fuera del ranga
