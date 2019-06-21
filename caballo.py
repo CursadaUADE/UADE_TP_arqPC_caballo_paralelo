@@ -12,11 +12,10 @@ class Caballo:
     )
     __posiciones_posibles = None
 
-    def __init__(self):
+    def __init__(self, posicion_inicial):
         self.__recorrido = Recorrido()
         self.__posiciones_posibles = []
-        # self.mover((random.randrange(8), random.randrange(8)))
-        self.mover((0, 0))
+        self.mover(posicion_inicial)
 
     @property
     def recorrido(self):

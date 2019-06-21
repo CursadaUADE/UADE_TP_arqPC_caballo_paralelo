@@ -9,7 +9,8 @@ def main():
     inicio = time.time()
     # hashes = []
     while not tablero_recorrido:
-        caballo = Caballo()
+        # caballo = Caballo((random.randrange(8), random.randrange(8)))
+        caballo = Caballo((0, 0))
         caballo.recorrer_tablero()
         cant += 1
         if caballo.cantidad_de_pasos == 64:
