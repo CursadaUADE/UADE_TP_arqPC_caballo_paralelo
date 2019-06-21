@@ -15,7 +15,26 @@ class Caballo:
     def __init__(self):
         self.__recorrido = Recorrido()
         self.__posiciones_posibles = []
-        self.mover((random.randrange(8), random.randrange(8)))
+        # self.mover((random.randrange(8), random.randrange(8)))
+        self.mover((0, 0))
+
+    @property
+    def recorrido(self):
+        return self.__recorrido
+
+    @property
+    def tablero_completado(self):
+        return self.__recorrido.cantidad_maxima_de_pasos == len(
+            self.__recorrido.posiciones_recorridas
+        )
+
+    @property
+    def cantidad_de_pasos(self):
+        return self.__recorrido.cantidad_de_pasos
+
+    @property
+    def posiciones_recorridas(self):
+        return self.__recorrido.posiciones_recorridas
 
     def mover(self, posicion):
         self.__posicion_actual = posicion
@@ -28,7 +47,6 @@ class Caballo:
         )
 
         while posiciones:
-            print(posiciones)
             self.__mover_a_posicion_random(posiciones)
             posiciones = self.__recorrido.obtener_posiciones_disponibles(
                 self.__posiciones_posibles
