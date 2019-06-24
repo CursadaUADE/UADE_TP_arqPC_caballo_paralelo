@@ -2,32 +2,42 @@ import time
 from caballo import Caballo
 
 
-def main():
+def recorrer(formato='Simple'):
+    print("Inicio de la corrida.", formato)
     tablero_recorrido = False
     cant = 0
 
     inicio = time.time()
-    # hashes = []
     while not tablero_recorrido:
-        # caballo = Caballo((random.randrange(8), random.randrange(8)))
         caballo = Caballo((0, 0))
         caballo.recorrer_tablero()
         cant += 1
-        if caballo.cantidad_de_pasos == 64:
-            print("=========================================")
-            print("Ejecución nro: " + str(cant))
-            print(caballo.recorrido)
-            print("=========================================")
-            print()
-            # hashes.append(caballo.recorrido.hash_b64)
-
         tablero_recorrido = caballo.tablero_completado
 
-    fin = time.time()
-
-    print("Proceso finalizado.")
+    duracion = time.time() - inicio
+    print()
+    print()
+    print("=========================================")
+    print("Proceso finalizado.", tablero_recorrido)
     print("* Cantidad de ejecuciones:", str(cant))
-    print("* Tiempo de ejecución:", str(fin - inicio), "segundos")
+    print("* Tiempo de ejecución:", duracion, "segundos")
+    print(caballo.recorrido)
+    print()
+    print('* hash_b64: ', caballo.recorrido.hash_b64)
+    print('* hash: ', caballo.recorrido.hash)
+    print("Tiempo de ejecucion| Ejecucion nro | Tiempo por cada ejecucion |")
+    print(
+        duracion, "|",
+        cant, "|",
+        duracion / cant, "|",
+        caballo.recorrido.hash_b64, "|",
+        formato, "|"
+    )
+    print("=========================================")
+
+
+def main():
+    recorrer('Simple')
 
 
 if __name__ == '__main__':
