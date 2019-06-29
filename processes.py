@@ -1,7 +1,11 @@
+"""
+processes.py
+
+Problema del Caballo - Implementación con Procesos.
+"""
+
 import caballo_recorrido
 import multiprocessing
-
-print(multiprocessing.cpu_count())
 
 
 def main():

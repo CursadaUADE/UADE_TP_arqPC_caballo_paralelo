@@ -1,8 +1,21 @@
+"""
+caballo_recorrido.py
+
+Problema del Caballo - Programa principal
+"""
+
 import time
 from caballo import Caballo
 
 
 def recorrer(formato='Simple'):
+    """
+    Función de recorrido. Inicializa un caballo y lo hace correr hasta que
+    logra completar un recorrido.
+
+    Args:
+        recorrer: str
+    """
     print("Inicio de la corrida.", formato)
     tablero_recorrido = False
     cant = 0
@@ -16,24 +29,21 @@ def recorrer(formato='Simple'):
 
     duracion = time.time() - inicio
     print()
-    print()
-    print("=========================================")
     print("Proceso finalizado.", tablero_recorrido)
-    print("* Cantidad de ejecuciones:", str(cant))
-    print("* Tiempo de ejecución:", duracion, "segundos")
     print(caballo.recorrido)
     print()
-    print('* hash_b64: ', caballo.recorrido.hash_b64)
-    print('* hash: ', caballo.recorrido.hash)
-    print("Tiempo de ejecucion| Ejecucion nro | Tiempo por cada ejecucion |")
+    print("Tiempo de ejecución", end=",")
+    print("Cant. de ejecuciones", end=",")
+    print("Tiempo por cada ejecución", end=",")
+    print("Hash", end=",")
+    print("Formato")
     print(
-        duracion, "|",
-        cant, "|",
-        duracion / cant, "|",
-        caballo.recorrido.hash_b64, "|",
-        formato, "|"
+        duracion, ",",
+        cant, ",",
+        duracion / cant, ",",
+        caballo.recorrido.hash_b64, ",",
+        formato, ","
     )
-    print("=========================================")
 
 
 def main():

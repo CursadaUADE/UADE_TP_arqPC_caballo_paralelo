@@ -1,18 +1,23 @@
+"""
+threads.py
+
+Problema del Caballo - Implementación con Threads.
+"""
+
 import threading
 import caballo_recorrido
 
 
 def main():
-    lista_thread = []
-    for i in range(4):
+    threads = []
+    for _ in range(4):
         thread = threading.Thread(
             target=caballo_recorrido.recorrer, args=('Thread',)
         )
-        lista_thread.append(thread)
-        print('thread start')
+        threads.append(thread)
         thread.start()
-    for i in lista_thread:
-        print('thread.join()')
+
+    for _ in threads:
         thread.join()
 
 
