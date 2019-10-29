@@ -1,6 +1,6 @@
 # Problema del caballo. ([wiki](https://es.wikipedia.org/wiki/Problema_del_caballo))
 El enfoque del codigo es buscar todos los recorridos posibles con fuerza bruta.
-[Pecentacion](https://docs.google.com/presentation/d/1g5suN5PzGorLZYN_RBhm4fDVId9C-RDVhs4V4EqEv1o/edit?usp=sharing)
+[Pesentacion](https://docs.google.com/presentation/d/1g5suN5PzGorLZYN_RBhm4fDVId9C-RDVhs4V4EqEv1o/edit?usp=sharing)
 
 **Ejecucion, desde la consola:**
 Para correrlo en simple hilo:
